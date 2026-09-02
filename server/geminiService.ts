@@ -32,7 +32,7 @@ export async function generateBotResponse(
   try {
     const kbSection = knowledgeBase ? `\n\nAuthoritative Business Knowledge Base:\n${knowledgeBase}` : '';
     const response = await client.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-2.0-flash',
       contents: [
         {
           role: 'user',
@@ -100,7 +100,7 @@ export async function generateBotTemplate(
 
   try {
     const response = await client.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-2.0-flash',
       contents: [
         {
           role: 'user',

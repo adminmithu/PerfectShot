@@ -62,7 +62,8 @@ router.post('/api/bots', async (req: Request, res: Response) => {
       }
     }
 
-    const newBot: Omit<TelegramBot, '_id'> = {
+    const newBot: Omit<TelegramBot, '_id'> & { _id: string } = {
+      _id: botId,
       name: botName,
       username,
       token,

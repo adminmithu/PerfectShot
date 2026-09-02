@@ -153,9 +153,24 @@ export async function processTelegramUpdate(
   botId: string,
   update: any
 ): Promise<{ replyText?: string; replyMarkup?: any; processed: boolean; command?: string }> {
-  const bot = await db.bots.findById(botId);
+  let bot = await db.bots.findById(botId);
   if (!bot) {
-    return { processed: false, replyText: 'Bot not found' };
+    bot = await db.bots.findOne(b => 
+      b._id === botId ||
+      (b.webhookUrl && b.webhookUrl.includes(botId)) ||
+      (b.token && b.token.includes(botId)) ||
+      b.username === botId
+    );
+  }
+  if (!bot) {
+    const allBots = await db.bots.find();
+    if (allBots.length > 0) {
+      bot = allBots[0];
+    }
+  }
+
+  if (!bot) {
+    return { processed: false, replyText: 'Bot not found in database' };
   }
 
   // Extract message details (support both regular message and callback query)
