@@ -39,7 +39,9 @@ router.post('/api/bots', async (req: Request, res: Response) => {
     const botName = name || botInfo?.first_name || 'My Telegram Bot';
     const username = botInfo?.username || 'bot_' + Math.random().toString(36).substring(2, 8);
     const botId = 'bot_' + Math.random().toString(36).substring(2, 9);
-    const appUrl = process.env.APP_URL || `http://${req.headers.host}`;
+    const rawAppUrl = process.env.APP_URL || process.env.RENDER_EXTERNAL_URL || (req.headers.host || 'perfectshot.onrender.com');
+    const cleanHost = rawAppUrl.replace(/^https?:\/\//, '');
+    const appUrl = `https://${cleanHost}`;
     const webhookUrl = `${appUrl}/api/telegram/webhook/${botId}`;
 
     const newBot: Omit<TelegramBot, '_id'> = {
@@ -275,7 +277,15 @@ router.post('/api/bots/:id/webhook/set', async (req: Request, res: Response) => 
     const bot = await db.bots.findById(req.params.id);
     if (!bot) return res.status(404).json({ success: false, error: 'Bot not found' });
 
-    const targetUrl = req.body.url || bot.webhookUrl;
+    let targetUrl = (req.body.url || bot.webhookUrl || '').trim();
+    if (targetUrl.startsWith('http://')) {
+      targetUrl = targetUrl.replace(/^http:\/\//, 'https://');
+    }
+    if (!targetUrl.startsWith('https://')) {
+      const renderHost = (process.env.RENDER_EXTERNAL_URL || 'https://perfectshot.onrender.com').replace(/^https?:\/\//, '');
+      targetUrl = `https://${renderHost}/api/telegram/webhook/${bot._id}`;
+    }
+
     const tgRes = await callTelegramApi(bot.token, 'setWebhook', {
       url: targetUrl,
       drop_pending_updates: Boolean(bot.config.dropPendingUpdates),
