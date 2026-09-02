@@ -1,0 +1,42 @@
+[
+  {
+    "botId": "bot_nexus_demo",
+    "telegramId": 98124501,
+    "senderName": "Elena Rostova",
+    "direction": "inbound",
+    "text": "/start",
+    "timestamp": "2026-09-02T15:59:31.742Z",
+    "status": "received",
+    "_id": "ke5g7npoxmtkba672"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "telegramId": 98124501,
+    "senderName": "Nexus Support AI",
+    "direction": "outbound",
+    "text": "👋 <b>Welcome to Nexus Platform!</b>\n\nI am your automated concierge.",
+    "timestamp": "2026-09-02T16:00:31.742Z",
+    "status": "sent",
+    "_id": "llyhyybo3mtkba672"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "telegramId": 98124501,
+    "senderName": "Elena Rostova",
+    "direction": "inbound",
+    "text": "Can I integrate custom webhook endpoints with this bot?",
+    "timestamp": "2026-09-02T16:17:31.742Z",
+    "status": "received",
+    "_id": "dvewov245mtkba673"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "telegramId": 98124501,
+    "senderName": "Nexus Support AI",
+    "direction": "outbound",
+    "text": "Yes, absolutely! Nexus supports custom HTTPS webhooks with secret token authentication, drop pending updates, and live payload debugging.",
+    "timestamp": "2026-09-02T16:18:31.742Z",
+    "status": "sent",
+    "_id": "ea643mbrjmtkba673"
+  }
+]

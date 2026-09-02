@@ -1,0 +1,46 @@
+[
+  {
+    "_id": "bot_nexus_demo",
+    "name": "Nexus Customer AI Bot",
+    "username": "nexus_support_ai_bot",
+    "token": "1234567890:AAFlgDemoTelegramBotTokenXyZ987",
+    "status": "active",
+    "mode": "simulator",
+    "description": "Customer service, automated sales funnel, and FAQ assistant with Gemini AI smart routing.",
+    "webhookUrl": "https://my-telegram-platform.app/api/telegram/webhook/bot_nexus_demo",
+    "webhookStatus": "connected",
+    "webhookPendingUpdates": 0,
+    "isVerified": true,
+    "botInfo": {
+      "id": 1234567890,
+      "is_bot": true,
+      "first_name": "Nexus Support AI",
+      "username": "nexus_support_ai_bot",
+      "can_join_groups": true,
+      "can_read_all_group_messages": false,
+      "supports_inline_queries": true
+    },
+    "stats": {
+      "messagesReceived": 428,
+      "messagesSent": 462,
+      "activeUsers": 84,
+      "commandsExecuted": 312,
+      "lastActiveAt": "2026-09-02T16:29:31.717Z",
+      "errorCount": 0
+    },
+    "config": {
+      "aiEnabled": true,
+      "aiPrompt": "You are Nexus, a helpful, courteous, and efficient Telegram assistant for our platform. Answer user questions concisely with friendly Telegram formatting (emojis, bold headings, bullet points).",
+      "defaultReply": "Thanks for reaching out! Type /help to see available commands or ask me anything directly.",
+      "parseMode": "HTML",
+      "allowedUpdates": [
+        "message",
+        "callback_query",
+        "inline_query"
+      ],
+      "dropPendingUpdates": false
+    },
+    "createdAt": "2026-08-26T16:29:31.717Z",
+    "updatedAt": "2026-09-02T16:29:31.717Z"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "botId": "bot_nexus_demo",
+    "triggerType": "contains",
+    "triggerValue": "human",
+    "responseText": "👨‍💻 <i>Notifying an available human operator...</i> An agent will respond directly in this chat shortly.",
+    "isActive": true,
+    "hitCount": 14,
+    "createdAt": "2026-09-02T16:29:31.717Z",
+    "_id": "c5v5t4s01mtkba66g"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "triggerType": "contains",
+    "triggerValue": "refund",
+    "responseText": "💰 <b>Refund Policy:</b> All subscriptions include a 14-day money-back guarantee. Please provide your order ID.",
+    "isActive": true,
+    "hitCount": 8,
+    "createdAt": "2026-09-02T16:29:31.717Z",
+    "_id": "fipd1lpnsmtkba66g"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "triggerType": "exact",
+    "triggerValue": "hello",
+    "responseText": "Hello there! 👋 How can Nexus assist your workflow today?",
+    "isActive": true,
+    "hitCount": 52,
+    "createdAt": "2026-09-02T16:29:31.717Z",
+    "_id": "42e1m0blymtkba66h"
+  }
+]

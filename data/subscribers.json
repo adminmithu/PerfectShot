@@ -1,0 +1,75 @@
+[
+  {
+    "botId": "bot_nexus_demo",
+    "telegramId": 98124501,
+    "firstName": "Elena",
+    "lastName": "Rostova",
+    "username": "elena_tech",
+    "languageCode": "en",
+    "isBot": false,
+    "isBlocked": false,
+    "tags": [
+      "vip",
+      "enterprise",
+      "active"
+    ],
+    "joinedAt": "2026-08-28T16:29:31.733Z",
+    "lastSeenAt": "2026-09-02T16:19:31.733Z",
+    "interactionCount": 28,
+    "customNotes": "CTO of Fintech Labs. Exploring Pro tier bot management.",
+    "_id": "s984uqckgmtkba66t"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "telegramId": 44291048,
+    "firstName": "Marcus",
+    "lastName": "Vance",
+    "username": "mvance",
+    "languageCode": "en",
+    "isBot": false,
+    "isBlocked": false,
+    "tags": [
+      "pro",
+      "active"
+    ],
+    "joinedAt": "2026-08-29T16:29:31.733Z",
+    "lastSeenAt": "2026-09-02T15:54:31.733Z",
+    "interactionCount": 15,
+    "customNotes": "Interested in automated webhook broadcasts.",
+    "_id": "ifl6njquimtkba66u"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "telegramId": 77218392,
+    "firstName": "Sophie",
+    "lastName": "Chen",
+    "username": "sophie_c",
+    "languageCode": "en",
+    "isBot": false,
+    "isBlocked": false,
+    "tags": [
+      "starter"
+    ],
+    "joinedAt": "2026-08-30T16:29:31.733Z",
+    "lastSeenAt": "2026-09-02T14:29:31.733Z",
+    "interactionCount": 9,
+    "_id": "z325e12mymtkba66v"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "telegramId": 10294821,
+    "firstName": "Liam",
+    "lastName": "O'Connor",
+    "username": "liam_dev",
+    "languageCode": "en",
+    "isBot": false,
+    "isBlocked": false,
+    "tags": [
+      "beta_tester"
+    ],
+    "joinedAt": "2026-08-31T16:29:31.733Z",
+    "lastSeenAt": "2026-09-02T12:29:31.733Z",
+    "interactionCount": 6,
+    "_id": "07m0tmrasmtkba671"
+  }
+]

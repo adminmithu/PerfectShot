@@ -1,0 +1,112 @@
+[
+  {
+    "botId": "bot_nexus_demo",
+    "command": "start",
+    "description": "Initialize bot & show welcome dashboard",
+    "responseType": "inline_keyboard",
+    "responseText": "👋 <b>Welcome to Nexus Platform!</b>\n\nI am your automated concierge. You can explore services, review plans, or open a support ticket.\n\n<i>Choose an option below to get started:</i>",
+    "inlineKeyboard": [
+      [
+        {
+          "text": "🚀 View Pricing",
+          "callback_data": "cmd_pricing"
+        },
+        {
+          "text": "📚 Documentation",
+          "url": "https://telegram.org"
+        }
+      ],
+      [
+        {
+          "text": "💬 Chat with Support",
+          "callback_data": "cmd_support"
+        },
+        {
+          "text": "✨ Try AI Assistant",
+          "callback_data": "cmd_ai"
+        }
+      ]
+    ],
+    "isActive": true,
+    "usageCount": 198,
+    "createdAt": "2026-09-02T16:29:31.717Z",
+    "updatedAt": "2026-09-02T16:29:31.717Z",
+    "_id": "moz1n209xmtkba66e"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "command": "help",
+    "description": "List all commands and capabilities",
+    "responseType": "text",
+    "responseText": "🛠 <b>Nexus Bot Commands:</b>\n\n• /start - Launch bot and main menu\n• /help - View this guide\n• /pricing - See subscription tiers\n• /support - Connect with a specialist\n• /status - Check service health\n• /subscribe - Subscribe to broadcast notifications\n\n💡 <i>Tip: You can also ask me general questions and our Gemini AI engine will answer!</i>",
+    "isActive": true,
+    "usageCount": 86,
+    "createdAt": "2026-09-02T16:29:31.717Z",
+    "updatedAt": "2026-09-02T16:29:31.717Z",
+    "_id": "yar8kfl8tmtkba66e"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "command": "pricing",
+    "description": "View subscription plans & checkout",
+    "responseType": "inline_keyboard",
+    "responseText": "💎 <b>Nexus Subscription Plans</b>\n\n<b>Starter:</b> $9/mo • 1 Bot • 5k updates\n<b>Pro:</b> $29/mo • 5 Bots • Unlimited broadcasts\n<b>Enterprise:</b> $99/mo • Custom AI training + Webhook SLA\n\nSelect a tier to begin instant activation:",
+    "inlineKeyboard": [
+      [
+        {
+          "text": "Starter Plan ($9)",
+          "callback_data": "buy_starter"
+        },
+        {
+          "text": "Pro Plan ($29)",
+          "callback_data": "buy_pro"
+        }
+      ],
+      [
+        {
+          "text": "💼 Enterprise Contact",
+          "callback_data": "buy_enterprise"
+        }
+      ]
+    ],
+    "isActive": true,
+    "usageCount": 64,
+    "createdAt": "2026-09-02T16:29:31.717Z",
+    "updatedAt": "2026-09-02T16:29:31.717Z",
+    "_id": "54w0jt02hmtkba66f"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "command": "support",
+    "description": "Open a customer support inquiry",
+    "responseType": "reply_keyboard",
+    "responseText": "🎧 <b>Support Desk</b>\n\nOur team is online 24/7. Send a message with your issue, or choose a category below:",
+    "replyKeyboard": [
+      [
+        "Billing Issue",
+        "Technical Bug"
+      ],
+      [
+        "Feature Request",
+        "Talk to Human Agent"
+      ]
+    ],
+    "isActive": true,
+    "usageCount": 42,
+    "createdAt": "2026-09-02T16:29:31.717Z",
+    "updatedAt": "2026-09-02T16:29:31.717Z",
+    "_id": "djj6zfi8zmtkba66f"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "command": "status",
+    "description": "Check system status and uptime",
+    "responseType": "text",
+    "responseText": "🟢 <b>System Status: Operational</b>\n\n• Webhook Latency: 42ms\n• Telegram API Gateway: Normal (200 OK)\n• Database Clusters: Healthy\n• AI Engine: Available",
+    "isActive": true,
+    "usageCount": 31,
+    "createdAt": "2026-09-02T16:29:31.717Z",
+    "updatedAt": "2026-09-02T16:29:31.717Z",
+    "_id": "vraris1atmtkba66g"
+  }
+]

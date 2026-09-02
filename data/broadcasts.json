@@ -1,0 +1,17 @@
+[
+  {
+    "botId": "bot_nexus_demo",
+    "title": "Platform v2.4 Feature Release Announcement",
+    "messageText": "🚀 <b>Exciting Update:</b> Nexus Bot Management v2.4 is now live!\n\nEnjoy real-time webhook inspection, direct admin replies, and AI auto-responders.",
+    "targetTags": [
+      "all"
+    ],
+    "status": "completed",
+    "totalRecipients": 84,
+    "sentCount": 84,
+    "failedCount": 0,
+    "createdAt": "2026-08-31T16:29:31.744Z",
+    "completedAt": "2026-08-31T16:29:35.744Z",
+    "_id": "jh5zmio5lmtkba674"
+  }
+]

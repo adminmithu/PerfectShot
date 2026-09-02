@@ -1,0 +1,26 @@
+[
+  {
+    "botId": "bot_nexus_demo",
+    "level": "info",
+    "event": "BOT_STARTED",
+    "details": "Nexus Support AI initialized in hybrid Webhook & Simulator mode.",
+    "timestamp": "2026-09-02T15:29:31.744Z",
+    "_id": "0ky3ehvdamtkba674"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "level": "webhook",
+    "event": "WEBHOOK_UPDATE",
+    "details": "Received Telegram Update ID 48201994 (message from @elena_tech)",
+    "timestamp": "2026-09-02T16:17:31.744Z",
+    "_id": "lbv082l5vmtkba674"
+  },
+  {
+    "botId": "bot_nexus_demo",
+    "level": "info",
+    "event": "AI_INFERENCE",
+    "details": "Generated smart response via Gemini in 640ms.",
+    "timestamp": "2026-09-02T16:18:31.744Z",
+    "_id": "m8eszsugkmtkba675"
+  }
+]
