@@ -114,6 +114,9 @@ export const BotsTab: React.FC<BotsTabProps> = ({
         setVerifyResult(null);
         setIsAddModalOpen(false);
         onBotUpdated();
+        if (data.data) {
+          onSelectBot(data.data);
+        }
       } else {
         alert(data.error || 'Failed to create bot');
       }

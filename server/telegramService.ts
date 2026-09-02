@@ -11,12 +11,7 @@ export interface TelegramApiResponse<T = any> {
 }
 
 export function isDemoToken(token: string): boolean {
-  return (
-    !token ||
-    token.startsWith('1234567890:') ||
-    token.toLowerCase().includes('demo') ||
-    token.includes('DemoTelegramBotToken')
-  );
+  return !token || token.trim() === '';
 }
 
 export async function callTelegramApi<T = any>(
