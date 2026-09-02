@@ -44,6 +44,24 @@ router.post('/api/bots', async (req: Request, res: Response) => {
     const appUrl = `https://${cleanHost}`;
     const webhookUrl = `${appUrl}/api/telegram/webhook/${botId}`;
 
+    let initialWebhookStatus: 'connected' | 'pending' | 'error' = 'pending';
+
+    // Auto set Webhook on Telegram API if bot token is valid
+    if (verifyResult.ok) {
+      try {
+        const tgRes = await callTelegramApi(token, 'setWebhook', {
+          url: webhookUrl,
+          drop_pending_updates: false,
+          allowed_updates: ['message', 'callback_query'],
+        });
+        if (tgRes.ok) {
+          initialWebhookStatus = 'connected';
+        }
+      } catch (err) {
+        console.error('[AutoWebhook] Initial setWebhook error:', err);
+      }
+    }
+
     const newBot: Omit<TelegramBot, '_id'> = {
       name: botName,
       username,
@@ -52,7 +70,7 @@ router.post('/api/bots', async (req: Request, res: Response) => {
       mode: mode || (isDemoToken(token) ? 'simulator' : 'webhook'),
       description: description || 'Managed Telegram bot instance.',
       webhookUrl,
-      webhookStatus: 'pending',
+      webhookStatus: initialWebhookStatus,
       isVerified: Boolean(verifyResult.ok),
       botInfo: botInfo || undefined,
       stats: {
@@ -76,6 +94,16 @@ router.post('/api/bots', async (req: Request, res: Response) => {
     };
 
     const created = await db.bots.insertOne(newBot);
+
+    if (initialWebhookStatus === 'connected') {
+      await db.logs.insertOne({
+        botId: created._id,
+        level: 'webhook',
+        event: 'WEBHOOK_AUTO_CONNECTED',
+        details: `Webhook automatically set to: ${webhookUrl}`,
+        timestamp: new Date().toISOString(),
+      });
+    }
 
     // Create default commands for the new bot
     await db.commands.insertMany([

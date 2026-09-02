@@ -41,11 +41,18 @@ export const WebhookTab: React.FC<WebhookTabProps> = ({ bot, onRefreshData }) =>
 
   useEffect(() => {
     if (bot) {
-      setCustomWebhookUrl(bot.webhookUrl);
+      const dynamicOrigin = typeof window !== 'undefined' ? window.location.origin : '';
+      let effectiveUrl = bot.webhookUrl;
+      if (!effectiveUrl || effectiveUrl.includes('my-telegram-platform.app') || effectiveUrl.includes('your-domain.com') || effectiveUrl.includes('perfectshot.onrender.com')) {
+        if (dynamicOrigin) {
+          effectiveUrl = `${dynamicOrigin}/api/telegram/webhook/${bot._id}`;
+        }
+      }
+      setCustomWebhookUrl(effectiveUrl);
       loadWebhookInfo();
       loadLogs();
     }
-  }, [bot]);
+  }, [bot?._id]);
 
   const loadWebhookInfo = async () => {
     if (!bot) return;
@@ -79,6 +86,36 @@ export const WebhookTab: React.FC<WebhookTabProps> = ({ bot, onRefreshData }) =>
     }
   };
 
+  const handleAutoSetupWebhook = async () => {
+    if (!bot) return;
+    const dynamicOrigin = window.location.origin;
+    const autoUrl = `${dynamicOrigin}/api/telegram/webhook/${bot._id}`;
+    setCustomWebhookUrl(autoUrl);
+    
+    setIsSettingWebhook(true);
+    setActionMessage(null);
+
+    try {
+      const res = await fetch(`/api/bots/${bot._id}/webhook/set`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: autoUrl }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setActionMessage(`⚡ Webhook auto-connected for @${bot.username}! Registered endpoint: ${autoUrl}`);
+        loadWebhookInfo();
+        onRefreshData();
+      } else {
+        setActionMessage('Failed to set webhook: ' + (data.result?.description || 'Check domain/URL'));
+      }
+    } catch (e: any) {
+      setActionMessage('Error setting webhook: ' + e.message);
+    } finally {
+      setIsSettingWebhook(false);
+    }
+  };
+
   const handleSetWebhook = async () => {
     if (!bot || !customWebhookUrl) return;
     setIsSettingWebhook(true);
@@ -92,7 +129,7 @@ export const WebhookTab: React.FC<WebhookTabProps> = ({ bot, onRefreshData }) =>
       });
       const data = await res.json();
       if (data.success) {
-        setActionMessage('Webhook successfully registered with Telegram servers!');
+        setActionMessage(`Webhook successfully registered on Telegram for @${bot.username}!`);
         loadWebhookInfo();
         onRefreshData();
       } else {
@@ -250,14 +287,23 @@ export const WebhookTab: React.FC<WebhookTabProps> = ({ bot, onRefreshData }) =>
           </div>
 
           <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
-            <div className="flex items-center space-x-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                onClick={handleAutoSetupWebhook}
+                disabled={isSettingWebhook}
+                className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white rounded-xl text-xs font-semibold shadow-md shadow-emerald-600/20 transition flex items-center space-x-1.5"
+                title="Automatically calculate current app domain & set webhook on Telegram"
+              >
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Auto-Connect Webhook</span>
+              </button>
               <button
                 onClick={handleSetWebhook}
                 disabled={isSettingWebhook || !customWebhookUrl}
                 className="px-4 py-2 bg-sky-600 hover:bg-sky-500 disabled:opacity-50 text-white rounded-xl text-xs font-semibold shadow-md shadow-sky-600/20 transition flex items-center space-x-1.5"
               >
                 <Globe className="w-3.5 h-3.5" />
-                <span>{isSettingWebhook ? 'Connecting...' : 'Set Webhook on Telegram'}</span>
+                <span>{isSettingWebhook ? 'Connecting...' : 'Set Custom URL'}</span>
               </button>
               <button
                 onClick={handleDeleteWebhook}

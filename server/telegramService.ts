@@ -67,7 +67,7 @@ function handleDemoTelegramApi<T>(
       return {
         ok: true,
         result: {
-          url: params.url || 'https://my-telegram-platform.app/api/telegram/webhook/bot_nexus_demo',
+          url: params.url || 'https://telemanager-app.vercel.app/api/telegram/webhook/bot_nexus_demo',
           has_custom_certificate: false,
           pending_update_count: 0,
           ip_address: '149.154.167.220',
